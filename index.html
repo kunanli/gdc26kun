@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDC 2026 见闻分享 · IGDA 深圳</title>
+  <style>
+    :root {
+      --bg: #0a0b12;
+      --bg-2: #121420;
+      --bg-3: #1a1d2e;
+      --border: #262a3d;
+      --text: #f4f4f7;
+      --muted: #9098ad;
+      --dim: #6b7190;
+      --accent: #ff4d5e;
+      --accent-2: #ffb84d;
+      --accent-3: #4de0ff;
+      --accent-4: #8b7cff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,77,94,0.15), transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(77,224,255,0.10), transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vh 8vw 12vh;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px);
+      transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s;
+      overflow-y: auto;
+    }
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(255,77,94,0.4);
+      border-radius: 999px;
+      background: rgba(255,77,94,0.08);
+    }
+    h1 {
+      font-size: clamp(2rem, 5.2vw, 4.2rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    p { font-size: 1.05rem; color: var(--text); margin-bottom: 0.8rem; max-width: 62ch; }
+    .lead { font-size: 1.25rem; color: var(--muted); max-width: 64ch; }
+    .muted { color: var(--muted); }
+    .dim { color: var(--dim); font-size: 0.9rem; }
+    .highlight { color: var(--accent-2); font-weight: 600; }
+    .strike { text-decoration: line-through; color: var(--dim); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.2rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.5rem;
+    }
+    .stat-card {
+      background: linear-gradient(180deg, var(--bg-2), var(--bg-3));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.3rem;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      cursor: default;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(255,77,94,0.15);
+    }
+    .stat-card .num {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .stat-card .num.cyan {
+      background: linear-gradient(135deg, var(--accent-3), var(--accent-4));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat-card .label {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .stat-card .sub {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--dim);
+    }
+
+    .quote-box {
+      border-left: 3px solid var(--accent-2);
+      padding: 0.6rem 0 0.6rem 1.2rem;
+      margin: 1.2rem 0;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .quote-box cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--dim);
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.85rem;
+      color: var(--text);
+      max-width: 62ch;
+    }
+    .bullet-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 1.2rem;
+      height: 180px;
+      margin: 1.8rem 0 0.6rem;
+      padding: 0 0.5rem;
+    }
+    .bar {
+      flex: 1;
+      background: linear-gradient(180deg, var(--accent), #9b2f3a);
+      border-radius: 6px 6px 0 0;
+      position: relative;
+      min-height: 12px;
+      transition: transform 0.25s ease;
+    }
+    .bar:hover { transform: scaleY(1.03); }
+    .bar .bar-val {
+      position: absolute;
+      top: -1.6rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-weight: 700;
+      color: var(--accent-2);
+      font-size: 1.05rem;
+    }
+    .bar .bar-year {
+      position: absolute;
+      bottom: -1.6rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.75rem 1.2rem;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .link-btn:hover {
+      border-color: var(--accent);
+      background: rgba(255,77,94,0.1);
+      transform: translateY(-2px);
+    }
+    .link-btn .tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.45rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .link-btn .tag.xhs { background: #ff2442; }
+    .link-btn .tag.gdc { background: #ffb84d; color: #000; }
+
+    .callout {
+      margin-top: 1.6rem;
+      padding: 1.2rem 1.4rem;
+      background: linear-gradient(135deg, rgba(255,77,94,0.12), rgba(255,184,77,0.08));
+      border: 1px solid rgba(255,184,77,0.3);
+      border-radius: 12px;
+      max-width: 68ch;
+    }
+    .callout strong { color: var(--accent-2); }
+
+    /* Nav + progress + dots */
+    .nav {
+      position: fixed;
+      bottom: 1.8rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      z-index: 20;
+      padding: 0 2rem;
+    }
+    .nav-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(18,20,32,0.9);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(10px);
+    }
+    .nav-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      background: rgba(255,77,94,0.15);
+    }
+    .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .dots { display: flex; gap: 0.5rem; }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 0;
+    }
+    .dot:hover { background: var(--muted); }
+    .dot.active {
+      background: var(--accent);
+      width: 28px;
+      border-radius: 5px;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--border);
+      z-index: 30;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .slide-num {
+      position: fixed;
+      top: 1.3rem;
+      right: 1.6rem;
+      font-size: 0.8rem;
+      color: var(--dim);
+      letter-spacing: 0.12em;
+      z-index: 20;
+    }
+    .kbd-hint {
+      position: fixed;
+      bottom: 1rem;
+      right: 1.6rem;
+      font-size: 0.72rem;
+      color: var(--dim);
+      z-index: 20;
+    }
+    .kbd {
+      display: inline-block;
+      padding: 1px 6px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" id="deck">
+    <section class="slide active" data-slide="1">
+      <span class="eyebrow">GDC 2026 · San Francisco</span>
+      <h1>从 Moscone 回望<br>中国、AI 与独立开发者的机会</h1>
+      <p class="lead">一场从主会场安静下来的 GDC、到周边活动火热、到一次 100 人满座的中国市场 Roundtable 的现场观察。</p>
+      <div class="callout">
+        <strong>主讲：</strong>IGDA 深圳 会长 &nbsp;·&nbsp; <span class="muted">2026.03 · GDC Festival of Gaming</span>
+      </div>
+      <p class="dim" style="margin-top:2rem">使用 <span class="kbd">←</span> <span class="kbd">→</span> 翻页 · <span class="kbd">空格</span> 下一页 · 点击底部圆点跳转</p>
+    </section>
+    <section class="slide" data-slide="2">
+      <span class="eyebrow">01 · 数据一览</span>
+      <h2>GDC 2026 at a glance</h2>
+      <p class="lead">今年 GDC 官方更名为 <span class="highlight">GDC Festival of Gaming</span>，3 月 9–13 日在 Moscone Center 举行。来自官方 Informa PLC 与 GDC 主席 Nina Brown 的披露：</p>
+      <div class="data-grid">
+        <div class="stat-card">
+          <span class="num">20,000</span>
+          <div class="label">总参会人数</div>
+          <div class="sub">较 2024 / 2025 的 30,000 下滑约 33%</div>
+        </div>
+        <div class="stat-card">
+          <span class="num cyan">85+</span>
+          <div class="label">参会国家</div>
+          <div class="sub">独立参会者来源</div>
+        </div>
+        <div class="stat-card">
+          <span class="num">700+</span>
+          <div class="label">Sessions</div>
+          <div class="sub">演讲 / Roundtable / Talk</div>
+        </div>
+        <div class="stat-card">
+          <span class="num cyan">1,100</span>
+          <div class="label">讲者</div>
+          <div class="sub">官方统计</div>
+        </div>
+        <div class="stat-card">
+          <span class="num">300+</span>
+          <div class="label">展商 &amp; 周边活动</div>
+          <div class="sub">Expo + Side Events</div>
+        </div>
+        <div class="stat-card">
+          <span class="num cyan">−33%</span>
+          <div class="label">同比人数变化</div>
+          <div class="sub">Informa PLC 官方数据</div>
+        </div>
+      </div>
+      <p class="dim" style="margin-top:1.6rem">来源：gamesmarket.global · gdconf.com · GamingHQ</p>
+    </section>
+    <section class="slide" data-slide="3">
+      <span class="eyebrow">02 · 现场观察</span>
+      <h2>主会场变冷，周边反而更热</h2>
+      <div class="two-col">
+        <div>
+          <p class="lead">我的直观感受：主展馆 Expo Floor 人流明显稀疏，而 Moscone 周围的 Side Event、酒店 Suite Meeting、开发者 Meetup 反倒密集得多。</p>
+          <ul class="bullet-list">
+            <li>欧洲、加拿大公司选择<span class="highlight">减员参会</span>，一些团队甚至完全放弃今年 GDC</li>
+            <li>差旅成本 + 美国移民政策 + 伊朗局势 共同推高了"不来"的决策</li>
+            <li>很多商务谈判搬到了场馆<span class="highlight">外部</span>的 Hotel Suite 与私人活动</li>
+            <li>官方更名为 "Festival of Gaming"，其实是对这种趋势的主动拥抱</li>
+          </ul>
+        </div>
+        <div>
+          <div class="quote-box">
+            "20,000 人对我来说已经够了。"
+            <cite>— Dan Takahashi · 行业记者</cite>
+          </div>
+          <div class="quote-box">
+            "一次戏剧性的重启，反而做出了一届更聚焦开发者的会议。"
+            <cite>— Don Daglow · 游戏行业老兵</cite>
+          </div>
+          <div class="callout">
+            <strong>我的判断：</strong>GDC 的"展会属性"在衰减，"社区属性"在放大。想拿下有用信息，重点不再是抢 Expo 的名片，而是<span class="highlight">混进对的 Roundtable 和 Side Event</span>。
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide" data-slide="4">
+      <span class="eyebrow">03 · 我的 Roundtable</span>
+      <h2>100 个座位，全部坐满</h2>
+      <div class="two-col">
+        <div>
+          <p class="lead"><span class="highlight">Developers in China · IGDA SZ Meet-up</span>（Presented by the IGDA）</p>
+          <ul class="bullet-list">
+            <li>由我作为 IGDA 深圳 会长主持的官方 Roundtable</li>
+            <li>开场前十分钟，<span class="highlight">100+ 座位被完全坐满</span>，门口还有人站着听完全场</li>
+            <li>提问非常密集，几乎全部集中在"如何合法进入中国市场、拿版号、找本地发行"</li>
+            <li>参会者背景混合：欧美独立开发者、日韩中小发行、投资人、本地化服务商</li>
+          </ul>
+          <div class="callout">
+            <strong>我的感受：</strong>国际开发者对<span class="highlight">进入中国市场</span>的渴望，远远超过了我出发前的预期。"出海"和"入华"正在同时发生。
+          </div>
+        </div>
+        <div>
+          <h3>现场记录 &amp; 官方日程</h3>
+          <div class="link-row">
+            <a class="link-btn" href="http://xhslink.com/o/8SHMZD94HYb" target="_blank" rel="noopener">
+              <span class="tag xhs">小红书</span>
+              100 个座位坐满｜中国游戏市场的机遇与挑战
+            </a>
+            <a class="link-btn" href="https://schedule.gdconf.com/session/developers-in-china-igda-sz-meet-up-presented-by-the-igda/918432" target="_blank" rel="noopener">
+              <span class="tag gdc">GDC</span>
+              官方 Schedule: Session 918432
+            </a>
+          </div>
+          <p class="dim" style="margin-top:1rem">👆 点击直接打开小红书视频 / GDC 官方页</p>
+        </div>
+      </div>
+    </section>
+    <section class="slide" data-slide="5">
+      <span class="eyebrow">04 · 为什么大家都想进中国</span>
+      <h2>中国游戏市场的体量，是真的写在数据里</h2>
+      <div class="data-grid">
+        <div class="stat-card">
+          <span class="num">¥350.8B</span>
+          <div class="label">2025 中国游戏总销售额</div>
+          <div class="sub">≈ US$49.8B · 历史新高</div>
+        </div>
+        <div class="stat-card">
+          <span class="num cyan">73.3%</span>
+          <div class="label">移动游戏占比</div>
+          <div class="sub">¥257.1B · 同比 +7.9%</div>
+        </div>
+        <div class="stat-card">
+          <span class="num">22.3%</span>
+          <div class="label">PC 游戏占比</div>
+          <div class="sub">¥78.2B</div>
+        </div>
+        <div class="stat-card">
+          <span class="num cyan">$110B</span>
+          <div class="label">2030 年预测</div>
+          <div class="sub">CAGR 11.7% (2025–2030)</div>
+        </div>
+        <div class="stat-card">
+          <span class="num">~50%</span>
+          <div class="label">Tencent 市场份额</div>
+          <div class="sub">$33B 年度营收 · 全球第一</div>
+        </div>
+        <div class="stat-card">
+          <span class="num cyan">双向</span>
+          <div class="label">"出海" 与 "入华"</div>
+          <div class="sub">同时发生 · 不是零和</div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Roundtable 的逻辑就在这里：</strong>当一个市场在 5 年内要从 $50B 冲向 $110B、且移动游戏占七成时，哪怕进入路径复杂，海外开发者也愿意花一小时挤进一间 100 人的屋子听一次分享。
+      </div>
+      <p class="dim" style="margin-top:1rem">来源：中国音数协游戏工委 · Grand View Research · Niko Partners · Variety</p>
+    </section>
+    <section class="slide" data-slide="6">
+      <span class="eyebrow">05 · AI 应用</span>
+      <h2>AI：一边在用，一边在怕</h2>
+      <div class="two-col">
+        <div>
+          <p class="lead">GDC 2026 《State of the Game Industry》报告里，AI 是最两极分化的议题。</p>
+          <div class="data-grid">
+            <div class="stat-card">
+              <span class="num">36%</span>
+              <div class="label">正在使用生成式 AI 的从业者</div>
+            </div>
+            <div class="stat-card">
+              <span class="num cyan">5%</span>
+              <div class="label">把 AI 做进玩家可见功能</div>
+              <div class="sub">绝大多数仍在幕后</div>
+            </div>
+            <div class="stat-card">
+              <span class="num">81%</span>
+              <div class="label">用于头脑风暴</div>
+              <div class="sub">代码 47% · 原型 35%</div>
+            </div>
+            <div class="stat-card">
+              <span class="num cyan">ChatGPT 74%</span>
+              <div class="label">最常用工具</div>
+              <div class="sub">Gemini 37% · Copilot 22%</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>认为 GenAI "对行业有负面影响" 的比例</h3>
+          <div class="bar-chart">
+            <div class="bar" style="height:18%"><span class="bar-val">18%</span><span class="bar-year">2024</span></div>
+            <div class="bar" style="height:30%"><span class="bar-val">30%</span><span class="bar-year">2025</span></div>
+            <div class="bar" style="height:52%"><span class="bar-val">52%</span><span class="bar-year">2026</span></div>
+          </div>
+          <p class="muted" style="margin-top:2rem">三年翻了将近 3 倍。64% 视觉艺术家、63% 设计师、59% 程序员表达担忧 — 焦虑主要来自：创意被替代、AI 素材的版权 / 授权问题、"用 AI 来合理化裁员"。</p>
+          <div class="callout">
+            <strong>机会信号：</strong>当大公司在犹豫"该不该用"的时候，独立开发者已经把 AI 嵌入日常工作流了 — 这是速度差带来的窗口。
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide" data-slide="7">
+      <span class="eyebrow">06 · 独立开发者</span>
+      <h2>裁员潮里的亮色：独立开发者</h2>
+      <div class="two-col">
+        <div>
+          <p class="lead">AAA 被 $100M 预算卡脖子的时候，独立和中型团队反而更抗压 — 这是今年 GDC 最值得记下来的反差。</p>
+          <ul class="bullet-list">
+            <li>2026 全行业裁员依旧严重：<span class="highlight">28%</span> 从业者在过去两年被裁，50% 工作室过去 12 个月进行过裁员</li>
+            <li>但受冲击最大的是 AAA。独立 / 中小团队因为<span class="highlight">成本结构轻</span>反而更有韧性</li>
+            <li><span class="highlight">88%</span> 独立开发者完全远程办公 — 全球协作的门槛已经拉平</li>
+            <li>IGF 2026 Grand Prize：<em>Titanium Court</em> — 独立精品依旧能打</li>
+          </ul>
+        </div>
+        <div>
+          <div class="data-grid">
+            <div class="stat-card">
+              <span class="num">$4.85B → $10.83B</span>
+              <div class="label">独立游戏市场 (2025 → 2031)</div>
+              <div class="sub">CAGR 14.32%</div>
+            </div>
+            <div class="stat-card">
+              <span class="num cyan">44.35%</span>
+              <div class="label">亚太地区营收占比</div>
+              <div class="sub">CAGR 16% · 增速最快</div>
+            </div>
+            <div class="stat-card">
+              <span class="num">$3.77B</span>
+              <div class="label">游戏美术外包市场</div>
+              <div class="sub">独立团队主要借力方向</div>
+            </div>
+            <div class="stat-card">
+              <span class="num cyan">Unity / UE</span>
+              <div class="label">老牌独立仍偏 Unity 54%</div>
+              <div class="sub">UE 42% · Unity 30% 全行业</div>
+            </div>
+          </div>
+          <div class="callout">
+            <strong>结合 AI + 中国市场：</strong>小团队 + AI 生产力 + 亚太独立游戏增长 + 中国市场出海入华 — 这四条线第一次同时对上了，对独立开发者是"四条腿都能吃"的一年。
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide" data-slide="8">
+      <span class="eyebrow">07 · 总结 &amp; 讨论</span>
+      <h2>场馆在变小，机会在变大 —<br>只是机会跑去了更对的地方</h2>
+      <div class="two-col">
+        <div>
+          <h3>三条 Takeaway</h3>
+          <ul class="bullet-list">
+            <li><strong>中国市场的吸引力被严重低估。</strong>国际开发者不是不想进，是缺一张路线图 — IGDA 深圳愿意做那张路线图。</li>
+            <li><strong>AI 不是明年的事，是今年的事。</strong>但全行业的焦虑也在同步放大；小团队反而因为<span class="highlight">不用等"共识"</span>而跑得更快。</li>
+            <li><strong>独立开发者的窗口正在打开。</strong>AAA 收缩、成本结构轻、远程协作成熟、亚太增速全球最高 — 四条线首次同时对齐。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>留给大家的三个问题</h3>
+          <div class="quote-box">你准备怎么用 AI 改变你团队的规模和节奏？</div>
+          <div class="quote-box">"出海" 和 "入华" —— 你站哪一边？还是两边都要站？</div>
+          <div class="quote-box">下一次 GDC，你还去不去？如果去，你会把预算花在主会场还是周边？</div>
+          <div class="callout" style="margin-top:1.6rem">
+            <strong>谢谢大家。</strong>欢迎在现场或会后联系 IGDA 深圳，任何关于中国市场、版号、本地发行的问题，都可以一起聊。
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="slide-num" id="slideNum">01 / 08</div>
+  <nav class="nav">
+    <button class="nav-btn" id="prevBtn" aria-label="上一页">←</button>
+    <div class="dots" id="dots"></div>
+    <button class="nav-btn" id="nextBtn" aria-label="下一页">→</button>
+  </nav>
+  <div class="kbd-hint"><span class="kbd">←</span> <span class="kbd">→</span> / <span class="kbd">Space</span></div>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsEl = document.getElementById('dots');
+    const progressBar = document.getElementById('progressBar');
+    const slideNum = document.getElementById('slideNum');
+    let current = 0;
+
+    // build dots
+    for (let i = 0; i < total; i++) {
+      const b = document.createElement('button');
+      b.className = 'dot' + (i === 0 ? ' active' : '');
+      b.setAttribute('aria-label', '跳转到第 ' + (i + 1) + ' 页');
+      b.addEventListener('click', () => showSlide(i));
+      dotsEl.appendChild(b);
+    }
+    const dots = dotsEl.querySelectorAll('.dot');
+
+    function showSlide(n) {
+      if (n < 0) n = 0;
+      if (n > total - 1) n = total - 1;
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      progressBar.style.width = ((current + 1) / total * 100) + '%';
+      slideNum.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+    }
+
+    function next() { if (current < total - 1) showSlide(current + 1); }
+    function prev() { if (current > 0) showSlide(current - 1); }
+
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+      else if (e.key === ' ') { e.preventDefault(); next(); }
+      else if (e.key === 'Home') { e.preventDefault(); showSlide(0); }
+      else if (e.key === 'End') { e.preventDefault(); showSlide(total - 1); }
+    });
+
+    // Touch swipe on mobile
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
+    }, { passive: true });
+
+    // Initial state
+    showSlide(0);
+  </script>
+</body>
+</html>
