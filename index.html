@@ -237,6 +237,46 @@
       font-size: 0.85rem;
     }
 
+    .hbar-chart { margin-top: 1.2rem; }
+    .hbar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 0.85rem;
+    }
+    .hbar-label {
+      width: 92px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      text-align: right;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .hbar-track {
+      flex: 1;
+      height: 22px;
+      background: var(--bg-2);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .hbar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+    .hbar-fill.cyan {
+      background: linear-gradient(90deg, var(--accent-3), var(--accent-4));
+    }
+    .hbar-val {
+      width: 52px;
+      font-weight: 700;
+      color: var(--accent-2);
+      font-size: 0.98rem;
+      flex-shrink: 0;
+    }
+
     .link-row {
       display: flex;
       flex-wrap: wrap;
@@ -601,9 +641,9 @@
               <div class="sub">独立团队主要借力方向</div>
             </div>
             <div class="stat-card">
-              <span class="num cyan">Unity / UE</span>
-              <div class="label">老牌独立仍偏 Unity 54%</div>
-              <div class="sub">UE 42% · Unity 30% 全行业</div>
+              <span class="num cyan">54%</span>
+              <div class="label">老牌独立仍在用 Unity</div>
+              <div class="sub">新独立团队则更偏 Godot →</div>
             </div>
           </div>
           <div class="callout">
@@ -613,7 +653,56 @@
       </div>
     </section>
     <section class="slide" data-slide="8">
-      <span class="eyebrow">07 · 总结 &amp; 讨论</span>
+      <span class="eyebrow">07 · 工具生态</span>
+      <h2>Unity、Unreal、Godot —— 还有那 19% 自研</h2>
+      <div class="two-col">
+        <div>
+          <h3>整体引擎分布 · GDC 2026 SOTI (2,300+ 受访)</h3>
+          <div class="hbar-chart">
+            <div class="hbar-row">
+              <div class="hbar-label">Unreal</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:42%"></div></div>
+              <div class="hbar-val">42%</div>
+            </div>
+            <div class="hbar-row">
+              <div class="hbar-label">Unity</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:30%"></div></div>
+              <div class="hbar-val">30%</div>
+            </div>
+            <div class="hbar-row">
+              <div class="hbar-label">自研引擎</div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:19%"></div></div>
+              <div class="hbar-val">19%</div>
+            </div>
+            <div class="hbar-row">
+              <div class="hbar-label">Godot</div>
+              <div class="hbar-track"><div class="hbar-fill cyan" style="width:5%"></div></div>
+              <div class="hbar-val">5%</div>
+            </div>
+            <div class="hbar-row">
+              <div class="hbar-label">UGC/其他</div>
+              <div class="hbar-track"><div class="hbar-fill cyan" style="width:4%"></div></div>
+              <div class="hbar-val">4%</div>
+            </div>
+          </div>
+          <p class="dim" style="margin-top:1rem">来源：GDC 2026 State of the Game Industry Report</p>
+        </div>
+        <div>
+          <h3>按团队类型切片</h3>
+          <ul class="bullet-list">
+            <li><strong>AA (59%) / AAA (47%) 工作室：</strong>Unreal 是默认选择 —— 高保真渲染和成熟管线</li>
+            <li><strong>老牌独立：54% 留在 Unity</strong> —— 生态和历史资产都锁在这里，迁移成本高</li>
+            <li><strong>F2P：38% Unity</strong> vs 买断制 28% —— 移动和休闲仍是 Unity 大本营</li>
+            <li><strong>新独立团队：11% 使用 Godot</strong> —— 是整体占比 5% 的 <span class="highlight">2 倍以上</span></li>
+          </ul>
+          <div class="callout">
+            <strong>关键信号：</strong>Godot 在"新独立"这一层的渗透率正在快速增长，开源、轻量、MIT 协议。对中国开发者而言，商业授权成本和合规审计都是天然优势 —— 这是未来 3–5 年值得紧盯的引擎迁移曲线。
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="slide" data-slide="9">
+      <span class="eyebrow">08 · 总结 &amp; 讨论</span>
       <h2>场馆在变小，机会在变大 —<br>只是机会跑去了更对的地方</h2>
       <div class="two-col">
         <div>
@@ -637,7 +726,7 @@
     </section>
   </main>
   <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-  <div class="slide-num" id="slideNum">01 / 08</div>
+  <div class="slide-num" id="slideNum">01 / 09</div>
   <nav class="nav">
     <button class="nav-btn" id="prevBtn" aria-label="上一页">←</button>
     <div class="dots" id="dots"></div>
