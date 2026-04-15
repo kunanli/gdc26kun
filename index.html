@@ -512,6 +512,37 @@
       font-family: monospace;
       color: var(--muted);
     }
+
+    /* i18n toggle */
+    .cn-only, .en-only { display: contents; }
+    html[lang="zh-Hans"] .en-only { display: none; }
+    html[lang="en"] .cn-only { display: none; }
+
+    .lang-toggle {
+      position: fixed;
+      top: 1.1rem;
+      right: 6.5rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--border);
+      background: rgba(18,20,32,0.85);
+      color: var(--muted);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 25;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.06em;
+      font-family: inherit;
+    }
+    .lang-toggle:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+    .lang-toggle .active-lang {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -519,120 +550,225 @@
     <section class="slide active" data-slide="1">
       <div class="two-col" style="align-items:center; gap:3rem">
         <div>
-          <span class="eyebrow">GDC 2026 · San Francisco</span>
-          <h1>从 Moscone 回望<br>中国、AI 与独立开发者的机会</h1>
-          <p class="lead">一场从主会场安静下来的 GDC、到周边活动火热、到一次 100 人满座的中国市场 Roundtable 的现场观察。</p>
-          <div class="callout">
-            <strong>主讲：</strong>IGDA 深圳 会长 &nbsp;·&nbsp; <span class="muted">2026.03 · GDC Festival of Gaming</span>
+          <div class="cn-only">
+            <span class="eyebrow">GDC 2026 · San Francisco</span>
+            <h1>从 Moscone 回望<br>中国、AI 与独立开发者的机会</h1>
+            <p class="lead">一场从主会场安静下来的 GDC、到周边活动火热、到一次 100 人满座的中国市场 Roundtable 的现场观察。</p>
+            <div class="callout">
+              <strong>主讲：</strong>IGDA 深圳 会长 &nbsp;·&nbsp; <span class="muted">2026.03 · GDC Festival of Gaming</span>
+            </div>
+            <p class="dim" style="margin-top:1.8rem">使用 <span class="kbd">←</span> <span class="kbd">→</span> 翻页 · <span class="kbd">空格</span> 下一页 · 按 <span class="kbd">L</span> 切换中英</p>
           </div>
-          <p class="dim" style="margin-top:1.8rem">使用 <span class="kbd">←</span> <span class="kbd">→</span> 翻页 · <span class="kbd">空格</span> 下一页 · 点击底部圆点跳转</p>
+          <div class="en-only">
+            <span class="eyebrow">GDC 2026 · San Francisco</span>
+            <h1>A view from Moscone:<br>China, AI &amp; the indie opportunity</h1>
+            <p class="lead">Field notes from a quieter main stage, louder side events, and the 100-seat packed China-market Roundtable I hosted.</p>
+            <div class="callout">
+              <strong>Speaker:</strong> Chair, IGDA Shenzhen &nbsp;·&nbsp; <span class="muted">Mar 2026 · GDC Festival of Gaming</span>
+            </div>
+            <p class="dim" style="margin-top:1.8rem">Use <span class="kbd">←</span> <span class="kbd">→</span> to navigate · <span class="kbd">Space</span> for next · press <span class="kbd">L</span> to toggle CN / EN</p>
+          </div>
         </div>
         <div>
-          <img class="photo-hero" src="photos/ScreenShot_2026-04-15_185102_741.png" alt="IGDA 深圳 GDC 2026 Roundtable · 100 人满场全景" loading="lazy">
+          <img class="photo-hero" src="photos/ScreenShot_2026-04-15_185102_741.png" alt="IGDA Shenzhen · GDC 2026 Roundtable · 100-seat packed" loading="lazy">
         </div>
       </div>
     </section>
     <section class="slide" data-slide="2">
-      <span class="eyebrow">01 · 数据一览</span>
-      <h2>GDC 2026 at a glance</h2>
-      <p class="lead">今年 GDC 官方更名为 <span class="highlight">GDC Festival of Gaming</span>，3 月 9–13 日在 Moscone Center 举行。来自官方 Informa PLC 与 GDC 主席 Nina Brown 的披露：</p>
-      <img class="photo-banner" src="photos/55148119264_1e17655890_k.jpg" alt="GDC 2026 audience cheering" loading="lazy">
-      <div class="data-grid">
-        <div class="stat-card">
-          <span class="num">20,000</span>
-          <div class="label">总参会人数</div>
-          <div class="sub">较 2024 / 2025 的 30,000 下滑约 33%</div>
+      <div class="cn-only">
+        <span class="eyebrow">01 · 数据一览</span>
+        <h2>GDC 2026 at a glance</h2>
+        <p class="lead">今年 GDC 官方更名为 <span class="highlight">GDC Festival of Gaming</span>，3 月 9–13 日在 Moscone Center 举行。来自官方 Informa PLC 与 GDC 主席 Nina Brown 的披露：</p>
+        <img class="photo-banner" src="photos/55148119264_1e17655890_k.jpg" alt="GDC 2026 audience cheering" loading="lazy">
+        <div class="data-grid">
+          <div class="stat-card">
+            <span class="num">20,000</span>
+            <div class="label">总参会人数</div>
+            <div class="sub">较 2024 / 2025 的 30,000 下滑约 33%</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">85+</span>
+            <div class="label">参会国家</div>
+            <div class="sub">独立参会者来源</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">700+</span>
+            <div class="label">Sessions</div>
+            <div class="sub">演讲 / Roundtable / Talk</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">1,100</span>
+            <div class="label">讲者</div>
+            <div class="sub">官方统计</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">300+</span>
+            <div class="label">展商 &amp; 周边活动</div>
+            <div class="sub">Expo + Side Events</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">−33%</span>
+            <div class="label">同比人数变化</div>
+            <div class="sub">Informa PLC 官方数据</div>
+          </div>
         </div>
-        <div class="stat-card">
-          <span class="num cyan">85+</span>
-          <div class="label">参会国家</div>
-          <div class="sub">独立参会者来源</div>
-        </div>
-        <div class="stat-card">
-          <span class="num">700+</span>
-          <div class="label">Sessions</div>
-          <div class="sub">演讲 / Roundtable / Talk</div>
-        </div>
-        <div class="stat-card">
-          <span class="num cyan">1,100</span>
-          <div class="label">讲者</div>
-          <div class="sub">官方统计</div>
-        </div>
-        <div class="stat-card">
-          <span class="num">300+</span>
-          <div class="label">展商 &amp; 周边活动</div>
-          <div class="sub">Expo + Side Events</div>
-        </div>
-        <div class="stat-card">
-          <span class="num cyan">−33%</span>
-          <div class="label">同比人数变化</div>
-          <div class="sub">Informa PLC 官方数据</div>
-        </div>
+        <p class="dim" style="margin-top:1.6rem">来源：gamesmarket.global · gdconf.com · GamingHQ</p>
       </div>
-      <p class="dim" style="margin-top:1.6rem">来源：gamesmarket.global · gdconf.com · GamingHQ</p>
+      <div class="en-only">
+        <span class="eyebrow">01 · By the numbers</span>
+        <h2>GDC 2026 at a glance</h2>
+        <p class="lead">GDC 2026 was rebranded as the <span class="highlight">GDC Festival of Gaming</span>, running March 9–13 at the Moscone Center. Official figures from Informa PLC and GDC president Nina Brown:</p>
+        <img class="photo-banner" src="photos/55148119264_1e17655890_k.jpg" alt="GDC 2026 audience cheering" loading="lazy">
+        <div class="data-grid">
+          <div class="stat-card">
+            <span class="num">20,000</span>
+            <div class="label">Total attendees</div>
+            <div class="sub">Down ~33% from 30,000 in 2024 / 2025</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">85+</span>
+            <div class="label">Countries</div>
+            <div class="sub">Unique attendees worldwide</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">700+</span>
+            <div class="label">Sessions</div>
+            <div class="sub">Talks · Roundtables</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">1,100</span>
+            <div class="label">Speakers</div>
+            <div class="sub">Official count</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">300+</span>
+            <div class="label">Exhibitors &amp; side events</div>
+            <div class="sub">Expo + off-venue</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">−33%</span>
+            <div class="label">Year-over-year change</div>
+            <div class="sub">Per Informa PLC</div>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:1.6rem">Sources: gamesmarket.global · gdconf.com · GamingHQ</p>
+      </div>
     </section>
     <section class="slide" data-slide="3">
-      <span class="eyebrow">02 · 现场观察</span>
-      <h2>主会场变冷，周边反而更热</h2>
-      <div class="two-col">
-        <div>
-          <p class="lead">我的直观感受：主展馆 Expo Floor 人流明显稀疏，而 Moscone 周围的 Side Event、酒店 Suite Meeting、开发者 Meetup 反倒密集得多。</p>
-          <ul class="bullet-list">
-            <li>欧洲、加拿大公司选择<span class="highlight">减员参会</span>，一些团队甚至完全放弃今年 GDC</li>
-            <li>差旅成本 + 美国移民政策 + 伊朗局势 共同推高了"不来"的决策</li>
-            <li>很多商务谈判搬到了场馆<span class="highlight">外部</span>的 Hotel Suite 与私人活动</li>
-            <li>官方更名为 "Festival of Gaming"，其实是对这种趋势的主动拥抱</li>
-          </ul>
-          <img class="photo-inline" src="photos/55146090928_7d5c0fe2e8_k.jpg" alt="GDC Festival Agenda poster wall" loading="lazy">
+      <div class="cn-only">
+        <span class="eyebrow">02 · 现场观察</span>
+        <h2>主会场变冷，周边反而更热</h2>
+        <div class="two-col">
+          <div>
+            <p class="lead">我的直观感受：主展馆 Expo Floor 人流明显稀疏，而 Moscone 周围的 Side Event、酒店 Suite Meeting、开发者 Meetup 反倒密集得多。</p>
+            <ul class="bullet-list">
+              <li>欧洲、加拿大公司选择<span class="highlight">减员参会</span>，一些团队甚至完全放弃今年 GDC</li>
+              <li>差旅成本 + 美国移民政策 + 伊朗局势 共同推高了"不来"的决策</li>
+              <li>很多商务谈判搬到了场馆<span class="highlight">外部</span>的 Hotel Suite 与私人活动</li>
+              <li>官方更名为 "Festival of Gaming"，其实是对这种趋势的主动拥抱</li>
+            </ul>
+            <img class="photo-inline" src="photos/55146090928_7d5c0fe2e8_k.jpg" alt="GDC Festival Agenda poster wall" loading="lazy">
+          </div>
+          <div>
+            <div class="quote-box">
+              "20,000 人对我来说已经够了。"
+              <cite>— Dean Takahashi · GamesBeat 主编</cite>
+            </div>
+            <div class="quote-box">
+              "一次戏剧性的重启，反而做出了一届更聚焦开发者的会议。"
+              <cite>— Don Daglow · 游戏行业老兵</cite>
+            </div>
+            <div class="callout">
+              <strong>我的判断：</strong>GDC 的"展会属性"在衰减，"社区属性"在放大。想拿下有用信息，重点不再是抢 Expo 的名片，而是<span class="highlight">混进对的 Roundtable 和 Side Event</span>。
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="quote-box">
-            "20,000 人对我来说已经够了。"
-            <cite>— Dean Takahashi · GamesBeat 主编</cite>
+      </div>
+      <div class="en-only">
+        <span class="eyebrow">02 · Floor observations</span>
+        <h2>The main hall went quieter. The periphery got louder.</h2>
+        <div class="two-col">
+          <div>
+            <p class="lead">My direct read: Expo-floor foot traffic was noticeably thin, while side events around Moscone — hotel suites, off-venue meetups, developer meet-ups — were far denser.</p>
+            <ul class="bullet-list">
+              <li>European and Canadian companies came with <span class="highlight">smaller delegations</span>; some teams skipped GDC entirely</li>
+              <li>Travel costs + US immigration policy + the Iran situation all pushed the "don't go" decision</li>
+              <li>Many real business meetings moved to hotel suites and private events <span class="highlight">outside</span> the venue</li>
+              <li>The "Festival of Gaming" rebrand is GDC's own acknowledgment of this shift</li>
+            </ul>
+            <img class="photo-inline" src="photos/55146090928_7d5c0fe2e8_k.jpg" alt="GDC Festival Agenda poster wall" loading="lazy">
           </div>
-          <div class="quote-box">
-            "一次戏剧性的重启，反而做出了一届更聚焦开发者的会议。"
-            <cite>— Don Daglow · 游戏行业老兵</cite>
-          </div>
-          <div class="callout">
-            <strong>我的判断：</strong>GDC 的"展会属性"在衰减，"社区属性"在放大。想拿下有用信息，重点不再是抢 Expo 的名片，而是<span class="highlight">混进对的 Roundtable 和 Side Event</span>。
+          <div>
+            <div class="quote-box">
+              "20,000 attendees was enough for me."
+              <cite>— Dean Takahashi · Editor, GamesBeat</cite>
+            </div>
+            <div class="quote-box">
+              "A dramatic reboot — and it produced a better, more dev-focused conference."
+              <cite>— Don Daglow · Game industry veteran</cite>
+            </div>
+            <div class="callout">
+              <strong>My read:</strong> GDC's "trade-show" DNA is fading; its "community" DNA is growing. If you want real takeaways, stop chasing booth business cards and <span class="highlight">get into the right roundtables and side events</span>.
+            </div>
           </div>
         </div>
       </div>
     </section>
     <section class="slide" data-slide="4">
-      <span class="eyebrow">03 · 我的 Roundtable</span>
-      <h2>100 个座位，全部坐满</h2>
+      <div class="cn-only">
+        <span class="eyebrow">03 · 我的 Roundtable</span>
+        <h2>100 个座位，全部坐满</h2>
+      </div>
+      <div class="en-only">
+        <span class="eyebrow">03 · My roundtable</span>
+        <h2>100 seats. Every single one taken.</h2>
+      </div>
       <div class="two-col">
         <div>
-          <p class="lead"><span class="highlight">Developers in China · IGDA SZ Meet-up</span>（Presented by the IGDA）</p>
-          <ul class="bullet-list">
-            <li>由我作为 IGDA 深圳 会长主持的官方 Roundtable</li>
-            <li>开场前十分钟，<span class="highlight">100+ 座位被完全坐满</span>，门口还有人站着听完全场</li>
-            <li>提问分成两条主线 ——
-              <br>① <span class="highlight">如何合法进入中国市场</span>：版号、本地发行、合规；
-              <br>② <span class="highlight">如何找到好的中国游戏</span>：外籍开发者反复说"我们找不到"，信息差是最大的墙</li>
-            <li>参会者背景混合：<span class="highlight">国内开发者</span>、欧美国外开发者、发行商、学生</li>
-          </ul>
-          <div class="callout">
-            <strong>我的感受：</strong>国际开发者对<span class="highlight">进入中国市场</span>的渴望远超我出发前的预期。但他们最大的痛点，不是版号也不是本地发行，而是<span class="highlight">信息差</span> —— 他们根本不知道哪些中国游戏值得看、该找谁聊。"出海"和"入华"正在同时发生，IGDA 深圳愿意做那座桥。
+          <div class="cn-only">
+            <p class="lead"><span class="highlight">Developers in China · IGDA SZ Meet-up</span>（Presented by the IGDA）</p>
+            <ul class="bullet-list">
+              <li>由我作为 IGDA 深圳 会长主持的官方 Roundtable</li>
+              <li>开场前十分钟，<span class="highlight">100+ 座位被完全坐满</span>，门口还有人站着听完全场</li>
+              <li>提问分成两条主线 ——
+                <br>① <span class="highlight">如何合法进入中国市场</span>：版号、本地发行、合规；
+                <br>② <span class="highlight">如何找到好的中国游戏</span>：外籍开发者反复说"我们找不到"，信息差是最大的墙</li>
+              <li>参会者背景混合：<span class="highlight">国内开发者</span>、欧美国外开发者、发行商、学生</li>
+            </ul>
+            <div class="callout">
+              <strong>我的感受：</strong>国际开发者对<span class="highlight">进入中国市场</span>的渴望远超我出发前的预期。但他们最大的痛点，不是版号也不是本地发行，而是<span class="highlight">信息差</span> —— 他们根本不知道哪些中国游戏值得看、该找谁聊。"出海"和"入华"正在同时发生，IGDA 深圳愿意做那座桥。
+            </div>
+          </div>
+          <div class="en-only">
+            <p class="lead"><span class="highlight">Developers in China · IGDA SZ Meet-up</span> (Presented by the IGDA)</p>
+            <ul class="bullet-list">
+              <li>The official roundtable I hosted as Chair of IGDA Shenzhen</li>
+              <li>Within 10 minutes of opening, <span class="highlight">100+ seats were completely full</span>, with more people standing at the door for the entire session</li>
+              <li>Questions fell into two main threads ——
+                <br>① <span class="highlight">How to legally enter the China market</span>: approvals, local publishing, compliance;
+                <br>② <span class="highlight">How to find good Chinese games</span>: overseas devs kept saying "we can't find them" — information asymmetry is the biggest wall</li>
+              <li>Audience mix: <span class="highlight">domestic Chinese devs</span>, Western devs, publishers, students</li>
+            </ul>
+            <div class="callout">
+              <strong>My take:</strong> the appetite of international developers to <span class="highlight">enter China</span> far exceeded what I expected. But their #1 pain point isn't approvals or publishing — it's the <span class="highlight">information gap</span>. They simply don't know which Chinese games to look at or who to talk to. "Going out" and "coming in" are happening at the same time, and IGDA Shenzhen wants to be that bridge.
+            </div>
           </div>
           <div class="photo-strip">
-            <img src="photos/ScreenShot_2026-04-15_185038_585.png" alt="IGDA SZ Roundtable · 沿墙加座" loading="lazy">
-            <img src="photos/ScreenShot_2026-04-15_185128_978.png" alt="IGDA SZ Roundtable · 外籍观众" loading="lazy">
+            <img src="photos/ScreenShot_2026-04-15_185038_585.png" alt="IGDA SZ Roundtable · overflow seating along the wall" loading="lazy">
+            <img src="photos/ScreenShot_2026-04-15_185128_978.png" alt="IGDA SZ Roundtable · international attendees" loading="lazy">
           </div>
         </div>
         <div>
-          <h3>现场视频 &amp; 官方日程</h3>
+          <h3><span class="cn-only">现场视频 &amp; 官方日程</span><span class="en-only">Session video &amp; official schedule</span></h3>
           <div class="video-wrap">
             <div class="video-fallback">
               <div class="xhs-logo">bilibili</div>
-              <div>100 个座位坐满｜<br>中国游戏市场的机遇与挑战</div>
-              <div class="tip">视频加载中 · 若无法播放<br>请点击下方按钮新窗口打开</div>
+              <div><span class="cn-only">100 个座位坐满｜<br>中国游戏市场的机遇与挑战</span><span class="en-only">100 seats full | Opportunities &amp; challenges in the China game market</span></div>
+              <div class="tip"><span class="cn-only">视频加载中 · 若无法播放<br>请点击下方按钮新窗口打开</span><span class="en-only">Loading · If the video fails to play,<br>click the button below to open in a new window</span></div>
             </div>
             <iframe
               src="https://player.bilibili.com/player.html?isOutside=true&amp;aid=116408260234175&amp;bvid=BV1vWQEBgEgs&amp;cid=37527554031&amp;p=1&amp;danmaku=0"
-              title="B站 · 100 个座位坐满｜中国游戏市场的机遇与挑战"
+              title="Bilibili · IGDA Shenzhen Roundtable at GDC 2026"
               scrolling="no"
               frameborder="no"
               framespacing="0"
@@ -641,200 +777,381 @@
           </div>
           <div class="link-row">
             <a class="link-btn" href="https://www.bilibili.com/video/BV1vWQEBgEgs" target="_blank" rel="noopener">
-              <span class="tag bili">B站</span>
-              新窗口打开原视频
+              <span class="tag bili">bilibili</span>
+              <span class="cn-only">新窗口打开原视频</span><span class="en-only">Open original video</span>
             </a>
             <a class="link-btn" href="https://schedule.gdconf.com/session/developers-in-china-igda-sz-meet-up-presented-by-the-igda/918432" target="_blank" rel="noopener">
               <span class="tag gdc">GDC</span>
-              官方 Schedule: 918432
+              <span class="cn-only">官方 Schedule: 918432</span><span class="en-only">Official Schedule: 918432</span>
             </a>
           </div>
         </div>
       </div>
     </section>
     <section class="slide" data-slide="5">
-      <span class="eyebrow">04 · 为什么大家都想进中国</span>
-      <h2>中国游戏市场的体量，是真的写在数据里</h2>
-      <div class="data-grid">
-        <div class="stat-card">
-          <span class="num">¥350.8B</span>
-          <div class="label">2025 中国游戏总销售额</div>
-          <div class="sub">≈ US$49.8B · 历史新高</div>
+      <div class="cn-only">
+        <span class="eyebrow">04 · 为什么大家都想进中国</span>
+        <h2>中国游戏市场的体量，是真的写在数据里</h2>
+        <div class="data-grid">
+          <div class="stat-card">
+            <span class="num">¥350.8B</span>
+            <div class="label">2025 中国游戏总销售额</div>
+            <div class="sub">≈ US$49.8B · 历史新高</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">73.3%</span>
+            <div class="label">移动游戏占比</div>
+            <div class="sub">¥257.1B · 同比 +7.9%</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">22.3%</span>
+            <div class="label">PC 游戏占比</div>
+            <div class="sub">¥78.2B</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">$110B</span>
+            <div class="label">2030 年预测</div>
+            <div class="sub">年均增长 11.7% (2025–2030)</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">~47%</span>
+            <div class="label">Tencent 国内游戏份额</div>
+            <div class="sub">¥164.2B 国内游戏 · 2025 全球最大游戏公司</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">双向</span>
+            <div class="label">"出海" 与 "入华"</div>
+            <div class="sub">同时发生 · 不是零和</div>
+          </div>
         </div>
-        <div class="stat-card">
-          <span class="num cyan">73.3%</span>
-          <div class="label">移动游戏占比</div>
-          <div class="sub">¥257.1B · 同比 +7.9%</div>
+        <div class="callout">
+          <strong>Roundtable 的逻辑就在这里：</strong>当一个市场在 5 年内要从 $50B 冲向 $110B、且移动游戏占七成时，哪怕进入路径复杂，海外开发者也愿意花一小时挤进一间 100 人的屋子听一次分享。
         </div>
-        <div class="stat-card">
-          <span class="num">22.3%</span>
-          <div class="label">PC 游戏占比</div>
-          <div class="sub">¥78.2B</div>
-        </div>
-        <div class="stat-card">
-          <span class="num cyan">$110B</span>
-          <div class="label">2030 年预测</div>
-          <div class="sub">年均增长 11.7% (2025–2030)</div>
-        </div>
-        <div class="stat-card">
-          <span class="num">~47%</span>
-          <div class="label">Tencent 国内游戏份额</div>
-          <div class="sub">¥164.2B 国内游戏 · 2025 全球最大游戏公司</div>
-        </div>
-        <div class="stat-card">
-          <span class="num cyan">双向</span>
-          <div class="label">"出海" 与 "入华"</div>
-          <div class="sub">同时发生 · 不是零和</div>
-        </div>
+        <p class="dim" style="margin-top:1rem">来源：中国音数协游戏工委 · Grand View Research · Niko Partners · Variety</p>
       </div>
-      <div class="callout">
-        <strong>Roundtable 的逻辑就在这里：</strong>当一个市场在 5 年内要从 $50B 冲向 $110B、且移动游戏占七成时，哪怕进入路径复杂，海外开发者也愿意花一小时挤进一间 100 人的屋子听一次分享。
+      <div class="en-only">
+        <span class="eyebrow">04 · Why everyone wants China</span>
+        <h2>China's game market is real — and it's in the numbers</h2>
+        <div class="data-grid">
+          <div class="stat-card">
+            <span class="num">¥350.8B</span>
+            <div class="label">2025 China game sales</div>
+            <div class="sub">≈ US$49.8B · all-time high</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">73.3%</span>
+            <div class="label">Mobile share</div>
+            <div class="sub">¥257.1B · +7.9% YoY</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">22.3%</span>
+            <div class="label">PC share</div>
+            <div class="sub">¥78.2B</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">$110B</span>
+            <div class="label">2030 forecast</div>
+            <div class="sub">11.7% YoY (2025–2030)</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">~47%</span>
+            <div class="label">Tencent domestic share</div>
+            <div class="sub">¥164.2B domestic · world's largest game company 2025</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">Two-way</span>
+            <div class="label">"Going out" &amp; "coming in"</div>
+            <div class="sub">Happening at the same time · not zero-sum</div>
+          </div>
+        </div>
+        <div class="callout">
+          <strong>That's the roundtable logic in one line:</strong> when a market is charging from $50B to $110B in 5 years and mobile owns 73%, overseas devs will squeeze into a 100-seat room for an hour just to hear one talk.
+        </div>
+        <p class="dim" style="margin-top:1rem">Sources: CGIGC (中国音数协游戏工委) · Grand View Research · Niko Partners · Variety</p>
       </div>
-      <p class="dim" style="margin-top:1rem">来源：中国音数协游戏工委 · Grand View Research · Niko Partners · Variety</p>
     </section>
     <section class="slide" data-slide="6">
-      <span class="eyebrow">05 · AI 应用</span>
-      <h2>AI：一边在用，一边在怕</h2>
+      <div class="cn-only">
+        <span class="eyebrow">05 · AI 应用</span>
+        <h2>AI：一边在用，一边在怕</h2>
+      </div>
+      <div class="en-only">
+        <span class="eyebrow">05 · AI adoption</span>
+        <h2>AI: everyone using it, everyone worried</h2>
+      </div>
       <div class="two-col">
         <div>
-          <p class="lead">GDC 2026 《State of the Game Industry》报告里，AI 是最两极分化的议题。</p>
-          <div class="data-grid">
-            <div class="stat-card">
-              <span class="num">36%</span>
-              <div class="label">正在使用生成式 AI 的从业者</div>
+          <div class="cn-only">
+            <p class="lead">GDC 2026 《State of the Game Industry》报告里，AI 是最两极分化的议题。</p>
+            <div class="data-grid">
+              <div class="stat-card">
+                <span class="num">36%</span>
+                <div class="label">正在使用生成式 AI 的从业者</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">5%</span>
+                <div class="label">把 AI 做进玩家可见功能</div>
+                <div class="sub">绝大多数仍在幕后</div>
+              </div>
+              <div class="stat-card">
+                <span class="num">81%</span>
+                <div class="label">用于头脑风暴</div>
+                <div class="sub">代码 47% · 原型 35%</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">ChatGPT 74%</span>
+                <div class="label">最常用工具</div>
+                <div class="sub">Gemini 37% · Copilot 22%</div>
+              </div>
             </div>
-            <div class="stat-card">
-              <span class="num cyan">5%</span>
-              <div class="label">把 AI 做进玩家可见功能</div>
-              <div class="sub">绝大多数仍在幕后</div>
-            </div>
-            <div class="stat-card">
-              <span class="num">81%</span>
-              <div class="label">用于头脑风暴</div>
-              <div class="sub">代码 47% · 原型 35%</div>
-            </div>
-            <div class="stat-card">
-              <span class="num cyan">ChatGPT 74%</span>
-              <div class="label">最常用工具</div>
-              <div class="sub">Gemini 37% · Copilot 22%</div>
+          </div>
+          <div class="en-only">
+            <p class="lead">In the GDC 2026 <em>State of the Game Industry</em> report, AI is the most polarized topic.</p>
+            <div class="data-grid">
+              <div class="stat-card">
+                <span class="num">36%</span>
+                <div class="label">Currently using generative AI</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">5%</span>
+                <div class="label">AI in player-facing features</div>
+                <div class="sub">The rest is all internal</div>
+              </div>
+              <div class="stat-card">
+                <span class="num">81%</span>
+                <div class="label">Use AI for brainstorming</div>
+                <div class="sub">Code 47% · prototyping 35%</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">ChatGPT 74%</span>
+                <div class="label">Most common tool</div>
+                <div class="sub">Gemini 37% · Copilot 22%</div>
+              </div>
             </div>
           </div>
         </div>
         <div>
-          <h3>认为 GenAI "对行业有负面影响" 的比例</h3>
+          <h3><span class="cn-only">认为 GenAI "对行业有负面影响" 的比例</span><span class="en-only">% who believe GenAI is harming the industry</span></h3>
           <div class="bar-chart">
             <div class="bar" style="height:18%"><span class="bar-val">18%</span><span class="bar-year">2024</span></div>
             <div class="bar" style="height:30%"><span class="bar-val">30%</span><span class="bar-year">2025</span></div>
             <div class="bar" style="height:52%"><span class="bar-val">52%</span><span class="bar-year">2026</span></div>
           </div>
-          <p class="muted" style="margin-top:2rem">三年翻了将近 3 倍。64% 视觉艺术家、63% 设计师、59% 程序员表达担忧 — 焦虑主要来自：创意被替代、AI 素材的版权 / 授权问题、"用 AI 来合理化裁员"。</p>
-          <div class="callout">
+          <p class="muted cn-only" style="margin-top:2rem">三年翻了将近 3 倍。64% 视觉艺术家、63% 设计师、59% 程序员表达担忧 — 焦虑主要来自：创意被替代、AI 素材的版权 / 授权问题、"用 AI 来合理化裁员"。</p>
+          <p class="muted en-only" style="margin-top:2rem">Nearly 3× in three years. 64% of visual artists, 63% of designers, 59% of programmers voiced concerns — driven by creative displacement, IP/licensing of AI-generated assets, and "AI as layoff justification".</p>
+          <div class="callout cn-only">
             <strong>机会信号：</strong>当大公司在犹豫"该不该用"的时候，独立开发者已经把 AI 嵌入日常工作流了 — 这是速度差带来的窗口。
+          </div>
+          <div class="callout en-only">
+            <strong>Opportunity signal:</strong> while big studios debate "should we use it?", indie developers have already baked AI into their daily workflow — this speed gap is the window.
           </div>
         </div>
       </div>
     </section>
     <section class="slide" data-slide="7">
-      <span class="eyebrow">06 · Vibe Coding</span>
-      <h2>Vibe Coding —— GDC 场外最火的词</h2>
-      <p class="lead">Andrej Karpathy 在 2025 年 2 月造出这个词；Collins 词典把它评为 2025 年度词汇。到 2026 GDC，已经没人问"要不要用"，只在问"怎么用得更快、更稳"。</p>
-      <div class="data-grid">
-        <div class="stat-card">
-          <span class="num">25%</span>
-          <div class="label">YC 2025 冬季批次</div>
-          <div class="sub">初创公司代码库 95% 由 AI 生成</div>
-        </div>
-        <div class="stat-card">
-          <span class="num cyan">51% / 95%</span>
-          <div class="label">开发者每天 / 每周用 AI 编码</div>
-          <div class="sub">2025 年末开发者调查</div>
-        </div>
-        <div class="stat-card">
-          <span class="num">$2B ARR</span>
-          <div class="label">Cursor · 2026.03 年化收入</div>
-          <div class="sub">从 0 到 $2B 仅用 ~18 个月</div>
-        </div>
-        <div class="stat-card">
-          <span class="num cyan">~41%</span>
-          <div class="label">2025 新代码中 AI 生成占比</div>
-          <div class="sub">行业估算 · 非审计数据</div>
-        </div>
-      </div>
-      <div class="two-col" style="margin-top:1.6rem">
-        <div>
-          <h3>时间线</h3>
-          <ul class="bullet-list">
-            <li><strong>2025.02</strong> Karpathy 在 X 写下 "vibe coding" — "fully give in to the vibes"</li>
-            <li><strong>2025.03</strong> Merriam-Webster 收录为 slang / trending 词</li>
-            <li><strong>2025 年度</strong> Collins 词典 Word of the Year</li>
-            <li><strong>2026.01</strong> 论文《Vibe Coding Kills Open Source》提出开源生态警告</li>
-            <li><strong>主流工具：</strong>Cursor · Claude Code · GitHub Copilot Agent Mode</li>
-          </ul>
-        </div>
-        <div>
-          <div class="callout">
-            <strong>典型案例：</strong>Pieter Levels 的 Flight Simulator MMO —— 几周内上线，带物理引擎和真实多人联机，他本人几乎没手写代码。同样的模式，正在把独立游戏的起跑线往下拉好几档。
+      <div class="cn-only">
+        <span class="eyebrow">06 · Vibe Coding</span>
+        <h2>Vibe Coding —— GDC 场外最火的词</h2>
+        <p class="lead">Andrej Karpathy 在 2025 年 2 月造出这个词；Collins 词典把它评为 2025 年度词汇。到 2026 GDC，已经没人问"要不要用"，只在问"怎么用得更快、更稳"。</p>
+        <div class="data-grid">
+          <div class="stat-card">
+            <span class="num">25%</span>
+            <div class="label">YC 2025 冬季批次</div>
+            <div class="sub">初创公司代码库 95% 由 AI 生成</div>
           </div>
-          <div class="quote-box" style="margin-top:1.2rem">
-            Karpathy 自己现在更偏爱的提法是 <span class="highlight">agentic engineering</span> —— 开发者 99% 的时间不是在写代码，而是在指挥 agent、做 review、纠偏。
+          <div class="stat-card">
+            <span class="num cyan">51% / 95%</span>
+            <div class="label">开发者每天 / 每周用 AI 编码</div>
+            <div class="sub">2025 年末开发者调查</div>
           </div>
-          <p class="muted" style="margin-top:1rem">对独立开发者的意义：一个人 + Vibe Coding + Godot + AI 美术 → 下一页 "独立游戏市场 5 年翻倍" 的故事，就是从这里长出来的。</p>
+          <div class="stat-card">
+            <span class="num">$2B ARR</span>
+            <div class="label">Cursor · 2026.03 年化收入</div>
+            <div class="sub">从 0 到 $2B 仅用 ~18 个月</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">~41%</span>
+            <div class="label">2025 新代码中 AI 生成占比</div>
+            <div class="sub">行业估算 · 非审计数据</div>
+          </div>
         </div>
+        <div class="two-col" style="margin-top:1.6rem">
+          <div>
+            <h3>时间线</h3>
+            <ul class="bullet-list">
+              <li><strong>2025.02</strong> Karpathy 在 X 写下 "vibe coding" — "fully give in to the vibes"</li>
+              <li><strong>2025.03</strong> Merriam-Webster 收录为 slang / trending 词</li>
+              <li><strong>2025 年度</strong> Collins 词典 Word of the Year</li>
+              <li><strong>2026.01</strong> 论文《Vibe Coding Kills Open Source》提出开源生态警告</li>
+              <li><strong>主流工具：</strong>Cursor · Claude Code · GitHub Copilot Agent Mode</li>
+            </ul>
+          </div>
+          <div>
+            <div class="callout">
+              <strong>典型案例：</strong>Pieter Levels 的 Flight Simulator MMO —— 几周内上线，带物理引擎和真实多人联机，他本人几乎没手写代码。同样的模式，正在把独立游戏的起跑线往下拉好几档。
+            </div>
+            <div class="quote-box" style="margin-top:1.2rem">
+              Karpathy 自己现在更偏爱的提法是 <span class="highlight">agentic engineering</span> —— 开发者 99% 的时间不是在写代码，而是在指挥 agent、做 review、纠偏。
+            </div>
+            <p class="muted" style="margin-top:1rem">对独立开发者的意义：一个人 + Vibe Coding + Godot + AI 美术 → 下一页 "独立游戏市场 5 年翻倍" 的故事，就是从这里长出来的。</p>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:1rem">来源：Wikipedia · MIT Tech Review · Fortune · Nucamp · DEV Community</p>
       </div>
-      <p class="dim" style="margin-top:1rem">来源：Wikipedia · MIT Tech Review · Fortune · Nucamp · DEV Community</p>
+      <div class="en-only">
+        <span class="eyebrow">06 · Vibe Coding</span>
+        <h2>Vibe Coding — the buzzword of the side events</h2>
+        <p class="lead">Andrej Karpathy coined the term in Feb 2025. Collins named it Word of the Year 2025. By GDC 2026, no one asks "should I use it?" — the only question is "how do I do it faster and more reliably?"</p>
+        <div class="data-grid">
+          <div class="stat-card">
+            <span class="num">25%</span>
+            <div class="label">YC Winter 2025 batch</div>
+            <div class="sub">Startup codebases 95% AI-generated</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">51% / 95%</span>
+            <div class="label">Devs using AI coding daily / weekly</div>
+            <div class="sub">Late-2025 developer survey</div>
+          </div>
+          <div class="stat-card">
+            <span class="num">$2B ARR</span>
+            <div class="label">Cursor · March 2026 annualized</div>
+            <div class="sub">0 → $2B in ~18 months</div>
+          </div>
+          <div class="stat-card">
+            <span class="num cyan">~41%</span>
+            <div class="label">Share of AI-generated code, 2025</div>
+            <div class="sub">Industry estimate · not audited</div>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top:1.6rem">
+          <div>
+            <h3>Timeline</h3>
+            <ul class="bullet-list">
+              <li><strong>2025.02</strong> Karpathy tweets "vibe coding" on X — "fully give in to the vibes"</li>
+              <li><strong>2025.03</strong> Merriam-Webster adds it as slang / trending</li>
+              <li><strong>2025</strong> Collins Dictionary Word of the Year</li>
+              <li><strong>2026.01</strong> "Vibe Coding Kills Open Source" paper warns of ecosystem risk</li>
+              <li><strong>Main tools:</strong> Cursor · Claude Code · GitHub Copilot Agent Mode</li>
+            </ul>
+          </div>
+          <div>
+            <div class="callout">
+              <strong>Canonical case:</strong> Pieter Levels' Flight Simulator MMO — shipped in weeks, real physics, live multiplayer, he barely wrote a line of code himself. The same pattern is pulling the indie-game starting line several rungs lower.
+            </div>
+            <div class="quote-box" style="margin-top:1.2rem">
+              Karpathy himself now prefers <span class="highlight">agentic engineering</span> — devs spend 99% of their time not writing code, but directing agents, reviewing, and course-correcting.
+            </div>
+            <p class="muted" style="margin-top:1rem">For indie devs: one person + vibe coding + Godot + AI art → the "indie market doubles in 5 years" story on the next page is literally made of this.</p>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:1rem">Sources: Wikipedia · MIT Tech Review · Fortune · Nucamp · DEV Community</p>
+      </div>
     </section>
     <section class="slide" data-slide="8">
-      <span class="eyebrow">07 · 独立开发者</span>
-      <h2>裁员潮里的亮色：独立开发者</h2>
+      <div class="cn-only">
+        <span class="eyebrow">07 · 独立开发者</span>
+        <h2>裁员潮里的亮色：独立开发者</h2>
+      </div>
+      <div class="en-only">
+        <span class="eyebrow">07 · Indie developers</span>
+        <h2>Bright spot in the layoffs: indie developers</h2>
+      </div>
       <div class="two-col">
         <div>
-          <p class="lead">AAA 被 $100M 预算卡脖子的时候，独立和中型团队反而更抗压 — 这是今年 GDC 最值得记下来的反差。</p>
-          <ul class="bullet-list">
-            <li>2026 全行业裁员依旧严重：<span class="highlight">28%</span> 从业者在过去两年被裁，50% 工作室过去 12 个月进行过裁员</li>
-            <li>但受冲击最大的是 AAA。独立 / 中小团队因为<span class="highlight">成本结构轻</span>反而更有韧性</li>
-            <li><span class="highlight">88%</span> 独立开发者完全远程办公 <span class="dim">(2023 Indie Game Industry Report)</span> — 全球协作的门槛已经拉平</li>
-            <li>IGF 2026 Grand Prize：<em>Titanium Court</em> — 独立精品依旧能打</li>
-          </ul>
+          <div class="cn-only">
+            <p class="lead">AAA 被 $100M 预算卡脖子的时候，独立和中型团队反而更抗压 — 这是今年 GDC 最值得记下来的反差。</p>
+            <ul class="bullet-list">
+              <li>2026 全行业裁员依旧严重：<span class="highlight">28%</span> 从业者在过去两年被裁，50% 工作室过去 12 个月进行过裁员</li>
+              <li>但受冲击最大的是 AAA。独立 / 中小团队因为<span class="highlight">成本结构轻</span>反而更有韧性</li>
+              <li><span class="highlight">88%</span> 独立开发者完全远程办公 <span class="dim">(2023 Indie Game Industry Report)</span> — 全球协作的门槛已经拉平</li>
+              <li>IGF 2026 Grand Prize：<em>Titanium Court</em> — 独立精品依旧能打</li>
+            </ul>
+          </div>
+          <div class="en-only">
+            <p class="lead">While AAA chokes on its $100M+ budgets, indie and mid-size teams are proving more resilient — the most notable contrast of GDC 2026.</p>
+            <ul class="bullet-list">
+              <li>2026 industry-wide layoffs remain severe: <span class="highlight">28%</span> of professionals laid off in the past 2 years; 50% of studios laid off in the past 12 months</li>
+              <li>The brunt falls on AAA. Indies and smaller teams are more resilient thanks to <span class="highlight">lighter cost structures</span></li>
+              <li><span class="highlight">88%</span> of indie devs work fully remote <span class="dim">(2023 Indie Game Industry Report)</span> — global collaboration barriers are essentially gone</li>
+              <li>IGF 2026 Grand Prize: <em>Titanium Court</em> — indie quality still delivers</li>
+            </ul>
+          </div>
           <div class="photo-strip">
             <img src="photos/55139429125_e8304a1087_k.jpg" alt="GDC Festival of Gaming speaker" loading="lazy">
             <img src="photos/55148566439_32d048a771_k.jpg" alt="Indie exhibit floor art installation" loading="lazy">
           </div>
         </div>
         <div>
-          <div class="data-grid">
-            <div class="stat-card">
-              <span class="num">$4.85B → $10.83B</span>
-              <div class="label">独立游戏市场 (2025 → 2031)</div>
-              <div class="sub">年均增长 14.32%</div>
+          <div class="cn-only">
+            <div class="data-grid">
+              <div class="stat-card">
+                <span class="num">$4.85B → $10.83B</span>
+                <div class="label">独立游戏市场 (2025 → 2031)</div>
+                <div class="sub">年均增长 14.32%</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">44.35%</span>
+                <div class="label">亚太地区营收占比</div>
+                <div class="sub">年均增长 16% · 增速最快</div>
+              </div>
+              <div class="stat-card">
+                <span class="num">$3.77B</span>
+                <div class="label">游戏美术外包市场</div>
+                <div class="sub">独立团队主要借力方向</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">54%</span>
+                <div class="label">老牌独立仍在用 Unity</div>
+                <div class="sub">新独立团队则更偏 Godot →</div>
+              </div>
             </div>
-            <div class="stat-card">
-              <span class="num cyan">44.35%</span>
-              <div class="label">亚太地区营收占比</div>
-              <div class="sub">年均增长 16% · 增速最快</div>
-            </div>
-            <div class="stat-card">
-              <span class="num">$3.77B</span>
-              <div class="label">游戏美术外包市场</div>
-              <div class="sub">独立团队主要借力方向</div>
-            </div>
-            <div class="stat-card">
-              <span class="num cyan">54%</span>
-              <div class="label">老牌独立仍在用 Unity</div>
-              <div class="sub">新独立团队则更偏 Godot →</div>
+            <div class="callout">
+              <strong>结合 AI + 中国市场：</strong>小团队 + AI 生产力 + 亚太独立游戏增长 + 中国市场出海入华 — 这四条线第一次同时对上了，对独立开发者是"四条腿都能吃"的一年。
             </div>
           </div>
-          <div class="callout">
-            <strong>结合 AI + 中国市场：</strong>小团队 + AI 生产力 + 亚太独立游戏增长 + 中国市场出海入华 — 这四条线第一次同时对上了，对独立开发者是"四条腿都能吃"的一年。
+          <div class="en-only">
+            <div class="data-grid">
+              <div class="stat-card">
+                <span class="num">$4.85B → $10.83B</span>
+                <div class="label">Indie game market (2025 → 2031)</div>
+                <div class="sub">14.32% YoY</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">44.35%</span>
+                <div class="label">Asia-Pacific revenue share</div>
+                <div class="sub">16% YoY · fastest growing</div>
+              </div>
+              <div class="stat-card">
+                <span class="num">$3.77B</span>
+                <div class="label">Game art outsourcing market</div>
+                <div class="sub">Main leverage for indie teams</div>
+              </div>
+              <div class="stat-card">
+                <span class="num cyan">54%</span>
+                <div class="label">Older indies still on Unity</div>
+                <div class="sub">New indies lean Godot →</div>
+              </div>
+            </div>
+            <div class="callout">
+              <strong>AI + China combined:</strong> small team + AI productivity + APAC indie growth + China outbound/inbound — these four lines aligning at once makes 2026 a "four legs of the stool" year for indies.
+            </div>
           </div>
         </div>
       </div>
     </section>
     <section class="slide" data-slide="9">
-      <span class="eyebrow">08 · 工具生态</span>
-      <h2>Unity、Unreal、Godot —— 还有那 19% 自研</h2>
+      <div class="cn-only">
+        <span class="eyebrow">08 · 工具生态</span>
+        <h2>Unity、Unreal、Godot —— 还有那 19% 自研</h2>
+      </div>
+      <div class="en-only">
+        <span class="eyebrow">08 · Tool ecosystem</span>
+        <h2>Unity, Unreal, Godot — and that 19% in-house</h2>
+      </div>
       <div class="two-col">
         <div>
-          <h3>整体引擎分布 · GDC 2026 SOTI (2,300+ 受访)</h3>
+          <h3><span class="cn-only">整体引擎分布 · GDC 2026 SOTI (2,300+ 受访)</span><span class="en-only">Overall engine share · GDC 2026 SOTI (2,300+ respondents)</span></h3>
           <div class="hbar-chart">
             <div class="hbar-row">
               <div class="hbar-label">Unreal</div>
@@ -847,7 +1164,7 @@
               <div class="hbar-val">30%</div>
             </div>
             <div class="hbar-row">
-              <div class="hbar-label">自研引擎</div>
+              <div class="hbar-label"><span class="cn-only">自研引擎</span><span class="en-only">In-house</span></div>
               <div class="hbar-track"><div class="hbar-fill" style="width:19%"></div></div>
               <div class="hbar-val">19%</div>
             </div>
@@ -857,80 +1174,132 @@
               <div class="hbar-val">5%</div>
             </div>
             <div class="hbar-row">
-              <div class="hbar-label">UGC/其他</div>
+              <div class="hbar-label"><span class="cn-only">UGC/其他</span><span class="en-only">UGC / Other</span></div>
               <div class="hbar-track"><div class="hbar-fill cyan" style="width:4%"></div></div>
               <div class="hbar-val">4%</div>
             </div>
           </div>
-          <p class="dim" style="margin-top:1rem">来源：GDC 2026 State of the Game Industry Report</p>
+          <p class="dim" style="margin-top:1rem"><span class="cn-only">来源：GDC 2026 State of the Game Industry Report</span><span class="en-only">Source: GDC 2026 State of the Game Industry Report</span></p>
         </div>
         <div>
-          <h3>按团队类型切片</h3>
-          <ul class="bullet-list">
+          <h3><span class="cn-only">按团队类型切片</span><span class="en-only">By studio segment</span></h3>
+          <ul class="bullet-list cn-only">
             <li><strong>AA (59%) / AAA (47%) 工作室：</strong>Unreal 是默认选择 —— 高保真渲染和成熟管线</li>
             <li><strong>老牌独立：54% 留在 Unity</strong> —— 生态和历史资产都锁在这里，迁移成本高</li>
             <li><strong>F2P：38% Unity</strong> vs 买断制 28% —— 移动和休闲仍是 Unity 大本营</li>
             <li><strong>新独立团队：11% 使用 Godot</strong> —— 是整体占比 5% 的 <span class="highlight">2 倍以上</span></li>
           </ul>
-          <div class="callout">
+          <ul class="bullet-list en-only">
+            <li><strong>AA (59%) / AAA (47%) studios:</strong> Unreal is the default — high-fidelity rendering and mature pipelines</li>
+            <li><strong>Older indies: 54% still on Unity</strong> — ecosystem and historical assets are locked in, migration cost is high</li>
+            <li><strong>F2P: 38% Unity</strong> vs premium 28% — mobile &amp; casual is still Unity territory</li>
+            <li><strong>New indies: 11% on Godot</strong> — more than <span class="highlight">2× the overall 5% share</span></li>
+          </ul>
+          <div class="callout cn-only">
             <strong>关键信号：</strong>Godot 在"新独立"这一层的渗透率正在快速增长，开源、轻量、MIT 协议。对中国开发者而言，商业授权成本和合规审计都是天然优势 —— 这是未来 3–5 年值得紧盯的引擎迁移曲线。
+          </div>
+          <div class="callout en-only">
+            <strong>Key signal:</strong> Godot is growing fast at the "new indie" layer — open source, lightweight, MIT license. For Chinese devs, commercial licensing costs and compliance audits are natural wins. Worth watching closely over the next 3–5 years.
           </div>
         </div>
       </div>
     </section>
     <section class="slide" data-slide="10">
-      <span class="eyebrow">09 · 总结 &amp; 讨论</span>
-      <h2>场馆在变小，机会在变大 —<br>只是机会跑去了更对的地方</h2>
+      <div class="cn-only">
+        <span class="eyebrow">09 · 总结 &amp; 讨论</span>
+        <h2>场馆在变小，机会在变大 —<br>只是机会跑去了更对的地方</h2>
+      </div>
+      <div class="en-only">
+        <span class="eyebrow">09 · Takeaways &amp; discussion</span>
+        <h2>The venue is shrinking, but the opportunity is growing —<br>it just moved to the right places</h2>
+      </div>
       <div class="two-col">
         <div>
-          <h3>三条 Takeaway</h3>
-          <ul class="bullet-list">
+          <h3><span class="cn-only">三条 Takeaway</span><span class="en-only">Three takeaways</span></h3>
+          <ul class="bullet-list cn-only">
             <li><strong>中国市场的吸引力被严重低估。</strong>国际开发者不是不想进，是缺一张路线图 — IGDA 深圳愿意做那张路线图。</li>
             <li><strong>AI 不是明年的事，是今年的事。</strong>但全行业的焦虑也在同步放大；小团队反而因为<span class="highlight">不用等"共识"</span>而跑得更快。</li>
             <li><strong>独立开发者的窗口正在打开。</strong>AAA 收缩、成本结构轻、远程协作成熟、亚太增速全球最高 — 四条线首次同时对齐。</li>
           </ul>
+          <ul class="bullet-list en-only">
+            <li><strong>The pull of the China market is badly underestimated.</strong> International devs aren't uninterested — they're missing a roadmap. IGDA Shenzhen wants to be that roadmap.</li>
+            <li><strong>AI is not a "next year" topic. It's a this-year topic.</strong> Industry anxiety is rising in parallel; small teams run faster precisely because <span class="highlight">they don't need consensus to move</span>.</li>
+            <li><strong>The indie window is opening.</strong> AAA contraction, lighter cost structures, mature remote collaboration, APAC as the fastest-growing region — four lines aligning for the first time.</li>
+          </ul>
           <img class="photo-inline" src="photos/55145141782_d6d4f8b1ab_k.jpg" alt="GDC 2026 panel discussion" loading="lazy">
         </div>
         <div>
-          <h3>留给大家的三个问题</h3>
-          <div class="quote-box">你准备怎么用 AI 改变你团队的规模和节奏？</div>
-          <div class="quote-box">"出海" 和 "入华" —— 你站哪一边？还是两边都要站？</div>
-          <div class="quote-box">下一次 GDC，你还去不去？如果去，你会把预算花在主会场还是周边？</div>
-          <div class="callout" style="margin-top:1.6rem">
+          <h3><span class="cn-only">留给大家的三个问题</span><span class="en-only">Three questions for you</span></h3>
+          <div class="quote-box cn-only">你准备怎么用 AI 改变你团队的规模和节奏？</div>
+          <div class="quote-box cn-only">"出海" 和 "入华" —— 你站哪一边？还是两边都要站？</div>
+          <div class="quote-box cn-only">下一次 GDC，你还去不去？如果去，你会把预算花在主会场还是周边？</div>
+          <div class="quote-box en-only">How will you use AI to change your team's size and pace?</div>
+          <div class="quote-box en-only">"Going out" vs "coming in" — which side are you on? Or both?</div>
+          <div class="quote-box en-only">Will you come back to GDC next year? If yes, main hall or side events?</div>
+          <div class="callout cn-only" style="margin-top:1.6rem">
             <strong>谢谢大家。</strong>欢迎在现场或会后联系 IGDA 深圳，任何关于中国市场、版号、本地发行的问题，都可以一起聊。
+          </div>
+          <div class="callout en-only" style="margin-top:1.6rem">
+            <strong>Thank you.</strong> Come find IGDA Shenzhen during or after the talk — any question on the China market, approvals, or local publishing, we're happy to chat.
           </div>
         </div>
       </div>
     </section>
     <section class="slide" data-slide="11">
-      <span class="eyebrow">10 · 下一站 · CTA</span>
-      <h2>5 月 21–25 日 · 深圳文博会动漫馆</h2>
+      <div class="cn-only">
+        <span class="eyebrow">10 · 下一站 · CTA</span>
+        <h2>5 月 21–25 日 · 深圳文博会动漫馆</h2>
+      </div>
+      <div class="en-only">
+        <span class="eyebrow">10 · What's next · CTA</span>
+        <h2>May 21–25 · Shenzhen Cultural Industries Fair · Animation Hall</h2>
+      </div>
       <div class="two-col" style="align-items:start; gap:3rem">
         <div>
-          <p class="lead">如果今天这份 deck 里任何一页触动了你 —— 想进中国、想出海、想把你的 demo 放到真实观众面前 —— 下一站我们在深圳见。</p>
-          <ul class="bullet-list">
-            <li><span class="highlight">深圳文博会</span> 是国内规格最高的文化产业博览会之一，<strong>2026.05.21 – 05.25</strong> 举办（连开 5 天）</li>
-            <li><span class="highlight">动漫馆</span> 是文博会专注 ACG 与游戏的馆区 —— 线下观众、媒体、发行商、投资人都在这里</li>
-            <li>今年 <strong>IGDA 深圳</strong> 在动漫馆内开设 <span class="highlight">专属展区</span>，为会员团队提供线下出展窗口</li>
-            <li><span class="highlight">🎟 IGDA 正式会员及以上免费参展</span>，并可获得<strong>专属展位</strong> —— 这是今年最直接的会员福利</li>
-            <li>不需要已上线产品 —— <strong>开发中的 demo、原型、早期可玩内容都欢迎</strong></li>
-          </ul>
-          <div class="callout">
-            <strong>谁适合报名：</strong>国内外游戏开发者 · 想在大湾区首次落地的海外工作室 · 正在找用户测试 / 媒体曝光 / 发行或投资对接的项目。非会员也欢迎通过这里一起申请加入 IGDA 深圳。
+          <div class="cn-only">
+            <p class="lead">如果今天这份 deck 里任何一页触动了你 —— 想进中国、想出海、想把你的 demo 放到真实观众面前 —— 下一站我们在深圳见。</p>
+            <ul class="bullet-list">
+              <li><span class="highlight">深圳文博会</span> 是国内规格最高的文化产业博览会之一，<strong>2026.05.21 – 05.25</strong> 举办（连开 5 天）</li>
+              <li><span class="highlight">动漫馆</span> 是文博会专注 ACG 与游戏的馆区 —— 线下观众、媒体、发行商、投资人都在这里</li>
+              <li>今年 <strong>IGDA 深圳</strong> 在动漫馆内开设 <span class="highlight">专属展区</span>，为会员团队提供线下出展窗口</li>
+              <li><span class="highlight">🎟 IGDA 正式会员及以上免费参展</span>，并可获得<strong>专属展位</strong> —— 这是今年最直接的会员福利</li>
+              <li>不需要已上线产品 —— <strong>开发中的 demo、原型、早期可玩内容都欢迎</strong></li>
+            </ul>
+            <div class="callout">
+              <strong>谁适合报名：</strong>国内外游戏开发者 · 想在大湾区首次落地的海外工作室 · 正在找用户测试 / 媒体曝光 / 发行或投资对接的项目。非会员也欢迎通过这里一起申请加入 IGDA 深圳。
+            </div>
+          </div>
+          <div class="en-only">
+            <p class="lead">If anything in this deck resonated — whether you want to enter China, go global, or put your demo in front of a real audience — the next stop is Shenzhen.</p>
+            <ul class="bullet-list">
+              <li><span class="highlight">The Shenzhen Cultural Industries Fair</span> is one of China's top-tier cultural expos, running <strong>May 21–25, 2026</strong> (5 consecutive days)</li>
+              <li><span class="highlight">The Animation Hall</span> is the fair's ACG &amp; games pavilion — offline audiences, press, publishers and investors all in one place</li>
+              <li>This year <strong>IGDA Shenzhen</strong> runs an <span class="highlight">exclusive booth area</span> inside the Animation Hall for member teams</li>
+              <li><span class="highlight">🎟 IGDA regular members and above exhibit FREE</span>, with a <strong>dedicated booth</strong> — the biggest direct member benefit of 2026</li>
+              <li>You don't need a shipped product — <strong>demos, prototypes and early builds are all welcome</strong></li>
+            </ul>
+            <div class="callout">
+              <strong>Who should apply:</strong> any game dev worldwide · overseas studios landing in the Greater Bay Area for the first time · projects looking for user testing / press / publisher or investor intros. Non-members: you can also use this form to apply for IGDA Shenzhen membership at the same time.
+            </div>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; align-items:center; gap:1rem">
           <img src="photos/wenbohui-2026-qr.png"
-               alt="2026 深圳文博会 · 动漫馆 · IGDA 深圳专属展区出展报名二维码"
+               alt="2026 Shenzhen Cultural Industries Fair · Animation Hall · IGDA Shenzhen booth signup QR"
                style="width:100%; max-width:340px; border-radius:14px; box-shadow:0 20px 50px rgba(0,0,0,0.4); border:1px solid var(--border); background:#fff"
                loading="lazy">
-          <p class="lead" style="text-align:center; margin:0; font-size:1.1rem"><span class="highlight">打开手机扫码 · 提交出展意向</span></p>
-          <p class="dim" style="text-align:center; margin:0; font-size:0.78rem">由飞书多维表格提供技术支持</p>
+          <p class="lead cn-only" style="text-align:center; margin:0; font-size:1.1rem"><span class="highlight">打开手机扫码 · 提交出展意向</span></p>
+          <p class="lead en-only" style="text-align:center; margin:0; font-size:1.1rem"><span class="highlight">Scan to submit your booth application</span></p>
+          <p class="dim cn-only" style="text-align:center; margin:0; font-size:0.78rem">由飞书多维表格提供技术支持</p>
+          <p class="dim en-only" style="text-align:center; margin:0; font-size:0.78rem">Powered by Feishu Bitable</p>
         </div>
       </div>
     </section>
   </main>
   <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+  <button class="lang-toggle" id="langBtn" aria-label="Toggle Chinese / English">
+    <span id="langLabel"><span class="active-lang">中</span> / EN</span>
+  </button>
   <div class="slide-num" id="slideNum">01 / 11</div>
   <nav class="nav">
     <button class="nav-btn" id="prevBtn" aria-label="上一页">←</button>
@@ -993,6 +1362,27 @@
       const dx = e.changedTouches[0].screenX - touchStartX;
       if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
     }, { passive: true });
+
+    // Language toggle
+    const langBtn = document.getElementById('langBtn');
+    const langLabel = document.getElementById('langLabel');
+    function renderLangLabel() {
+      const lang = document.documentElement.getAttribute('lang');
+      if (lang === 'en') {
+        langLabel.innerHTML = '中 / <span class="active-lang">EN</span>';
+      } else {
+        langLabel.innerHTML = '<span class="active-lang">中</span> / EN';
+      }
+    }
+    langBtn.addEventListener('click', () => {
+      const html = document.documentElement;
+      html.setAttribute('lang', html.getAttribute('lang') === 'en' ? 'zh-Hans' : 'en');
+      renderLangLabel();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'l' || e.key === 'L') { langBtn.click(); }
+    });
+    renderLangLabel();
 
     // Initial state
     showSlide(0);
