@@ -277,6 +277,52 @@
       flex-shrink: 0;
     }
 
+    .photo-hero {
+      width: 100%;
+      max-height: 70vh;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+    }
+    .photo-banner {
+      width: 100%;
+      max-height: 200px;
+      aspect-ratio: 21 / 9;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 0.2rem 0 1.4rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    }
+    .photo-inline {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 1.2rem 0 0.4rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.6rem;
+      margin-top: 1.2rem;
+    }
+    .photo-strip img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: transform 0.25s ease;
+    }
+    .photo-strip img:hover {
+      transform: scale(1.04);
+    }
+
     .video-wrap {
       position: relative;
       width: 100%;
@@ -471,18 +517,26 @@
 <body>
   <main class="deck" id="deck">
     <section class="slide active" data-slide="1">
-      <span class="eyebrow">GDC 2026 · San Francisco</span>
-      <h1>从 Moscone 回望<br>中国、AI 与独立开发者的机会</h1>
-      <p class="lead">一场从主会场安静下来的 GDC、到周边活动火热、到一次 100 人满座的中国市场 Roundtable 的现场观察。</p>
-      <div class="callout">
-        <strong>主讲：</strong>IGDA 深圳 会长 &nbsp;·&nbsp; <span class="muted">2026.03 · GDC Festival of Gaming</span>
+      <div class="two-col" style="align-items:center; gap:3rem">
+        <div>
+          <span class="eyebrow">GDC 2026 · San Francisco</span>
+          <h1>从 Moscone 回望<br>中国、AI 与独立开发者的机会</h1>
+          <p class="lead">一场从主会场安静下来的 GDC、到周边活动火热、到一次 100 人满座的中国市场 Roundtable 的现场观察。</p>
+          <div class="callout">
+            <strong>主讲：</strong>IGDA 深圳 会长 &nbsp;·&nbsp; <span class="muted">2026.03 · GDC Festival of Gaming</span>
+          </div>
+          <p class="dim" style="margin-top:1.8rem">使用 <span class="kbd">←</span> <span class="kbd">→</span> 翻页 · <span class="kbd">空格</span> 下一页 · 点击底部圆点跳转</p>
+        </div>
+        <div>
+          <img class="photo-hero" src="photos/55142367211_f27ec324e5_k.jpg" alt="GDC 2026 Festival of Gaming · Awards hall" loading="lazy">
+        </div>
       </div>
-      <p class="dim" style="margin-top:2rem">使用 <span class="kbd">←</span> <span class="kbd">→</span> 翻页 · <span class="kbd">空格</span> 下一页 · 点击底部圆点跳转</p>
     </section>
     <section class="slide" data-slide="2">
       <span class="eyebrow">01 · 数据一览</span>
       <h2>GDC 2026 at a glance</h2>
       <p class="lead">今年 GDC 官方更名为 <span class="highlight">GDC Festival of Gaming</span>，3 月 9–13 日在 Moscone Center 举行。来自官方 Informa PLC 与 GDC 主席 Nina Brown 的披露：</p>
+      <img class="photo-banner" src="photos/55148119264_1e17655890_k.jpg" alt="GDC 2026 audience cheering" loading="lazy">
       <div class="data-grid">
         <div class="stat-card">
           <span class="num">20,000</span>
@@ -529,6 +583,7 @@
             <li>很多商务谈判搬到了场馆<span class="highlight">外部</span>的 Hotel Suite 与私人活动</li>
             <li>官方更名为 "Festival of Gaming"，其实是对这种趋势的主动拥抱</li>
           </ul>
+          <img class="photo-inline" src="photos/55146090928_7d5c0fe2e8_k.jpg" alt="GDC Festival Agenda poster wall" loading="lazy">
         </div>
         <div>
           <div class="quote-box">
@@ -554,11 +609,17 @@
           <ul class="bullet-list">
             <li>由我作为 IGDA 深圳 会长主持的官方 Roundtable</li>
             <li>开场前十分钟，<span class="highlight">100+ 座位被完全坐满</span>，门口还有人站着听完全场</li>
-            <li>提问非常密集，几乎全部集中在"如何合法进入中国市场、拿版号、找本地发行"</li>
-            <li>参会者背景混合：欧美独立开发者、日韩中小发行、投资人、本地化服务商</li>
+            <li>提问分成两条主线 ——
+              <br>① <span class="highlight">如何合法进入中国市场</span>：版号、本地发行、合规；
+              <br>② <span class="highlight">如何找到好的中国游戏</span>：外籍开发者反复说"我们找不到"，信息差是最大的墙</li>
+            <li>参会者背景混合：<span class="highlight">国内开发者</span>、欧美国外开发者、发行商、学生</li>
           </ul>
           <div class="callout">
-            <strong>我的感受：</strong>国际开发者对<span class="highlight">进入中国市场</span>的渴望，远远超过了我出发前的预期。"出海"和"入华"正在同时发生。
+            <strong>我的感受：</strong>国际开发者对<span class="highlight">进入中国市场</span>的渴望远超我出发前的预期。但他们最大的痛点，不是版号也不是本地发行，而是<span class="highlight">信息差</span> —— 他们根本不知道哪些中国游戏值得看、该找谁聊。"出海"和"入华"正在同时发生，IGDA 深圳愿意做那座桥。
+          </div>
+          <div class="photo-strip">
+            <img src="photos/55147364757_34f4525f5f_k.jpg" alt="Packed GDC session room" loading="lazy">
+            <img src="photos/55141183064_8d75e56522_k.jpg" alt="GDC 2026 session audience" loading="lazy">
           </div>
         </div>
         <div>
@@ -613,7 +674,7 @@
         <div class="stat-card">
           <span class="num cyan">$110B</span>
           <div class="label">2030 年预测</div>
-          <div class="sub">CAGR 11.7% (2025–2030)</div>
+          <div class="sub">年均增长 11.7% (2025–2030)</div>
         </div>
         <div class="stat-card">
           <span class="num">~47%</span>
@@ -734,18 +795,22 @@
             <li><span class="highlight">88%</span> 独立开发者完全远程办公 <span class="dim">(2023 Indie Game Industry Report)</span> — 全球协作的门槛已经拉平</li>
             <li>IGF 2026 Grand Prize：<em>Titanium Court</em> — 独立精品依旧能打</li>
           </ul>
+          <div class="photo-strip">
+            <img src="photos/55139429125_e8304a1087_k.jpg" alt="GDC Festival of Gaming speaker" loading="lazy">
+            <img src="photos/55148566439_32d048a771_k.jpg" alt="Indie exhibit floor art installation" loading="lazy">
+          </div>
         </div>
         <div>
           <div class="data-grid">
             <div class="stat-card">
               <span class="num">$4.85B → $10.83B</span>
               <div class="label">独立游戏市场 (2025 → 2031)</div>
-              <div class="sub">CAGR 14.32%</div>
+              <div class="sub">年均增长 14.32%</div>
             </div>
             <div class="stat-card">
               <span class="num cyan">44.35%</span>
               <div class="label">亚太地区营收占比</div>
-              <div class="sub">CAGR 16% · 增速最快</div>
+              <div class="sub">年均增长 16% · 增速最快</div>
             </div>
             <div class="stat-card">
               <span class="num">$3.77B</span>
@@ -824,6 +889,7 @@
             <li><strong>AI 不是明年的事，是今年的事。</strong>但全行业的焦虑也在同步放大；小团队反而因为<span class="highlight">不用等"共识"</span>而跑得更快。</li>
             <li><strong>独立开发者的窗口正在打开。</strong>AAA 收缩、成本结构轻、远程协作成熟、亚太增速全球最高 — 四条线首次同时对齐。</li>
           </ul>
+          <img class="photo-inline" src="photos/55145141782_d6d4f8b1ab_k.jpg" alt="GDC 2026 panel discussion" loading="lazy">
         </div>
         <div>
           <h3>留给大家的三个问题</h3>
