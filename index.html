@@ -280,9 +280,8 @@
     .video-wrap {
       position: relative;
       width: 100%;
-      max-width: 320px;
-      aspect-ratio: 9 / 16;
-      max-height: 520px;
+      max-width: 560px;
+      aspect-ratio: 16 / 9;
       margin: 1rem 0 1.2rem;
       border-radius: 14px;
       overflow: hidden;
@@ -316,7 +315,7 @@
     .video-fallback .xhs-logo {
       font-size: 1.8rem;
       font-weight: 800;
-      color: #ff2442;
+      color: #fb7299;
       margin-bottom: 0.6rem;
       letter-spacing: -0.02em;
     }
@@ -361,6 +360,7 @@
       letter-spacing: 0.04em;
     }
     .link-btn .tag.xhs { background: #ff2442; }
+    .link-btn .tag.bili { background: #fb7299; }
     .link-btn .tag.gdc { background: #ffb84d; color: #000; }
 
     .callout {
@@ -562,23 +562,25 @@
           </div>
         </div>
         <div>
-          <h3>现场记录 &amp; 官方日程</h3>
+          <h3>现场视频 &amp; 官方日程</h3>
           <div class="video-wrap">
             <div class="video-fallback">
-              <div class="xhs-logo">小红书</div>
+              <div class="xhs-logo">bilibili</div>
               <div>100 个座位坐满｜<br>中国游戏市场的机遇与挑战</div>
-              <div class="tip">若 iframe 被跨域策略拦截，<br>请点击下方链接新窗口打开</div>
+              <div class="tip">视频加载中 · 若无法播放<br>请点击下方按钮新窗口打开</div>
             </div>
             <iframe
-              src="https://xhslink.com/o/8SHMZD94HYb"
-              title="小红书 · 100个座位坐满｜中国游戏市场的机遇与挑战"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              referrerpolicy="no-referrer-when-downgrade"
+              src="https://player.bilibili.com/player.html?isOutside=true&amp;aid=116408260234175&amp;bvid=BV1vWQEBgEgs&amp;cid=37527554031&amp;p=1&amp;danmaku=0"
+              title="B站 · 100 个座位坐满｜中国游戏市场的机遇与挑战"
+              scrolling="no"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
               loading="lazy"></iframe>
           </div>
           <div class="link-row">
-            <a class="link-btn" href="https://xhslink.com/o/8SHMZD94HYb" target="_blank" rel="noopener">
-              <span class="tag xhs">小红书</span>
+            <a class="link-btn" href="https://www.bilibili.com/video/BV1vWQEBgEgs" target="_blank" rel="noopener">
+              <span class="tag bili">B站</span>
               新窗口打开原视频
             </a>
             <a class="link-btn" href="https://schedule.gdconf.com/session/developers-in-china-igda-sz-meet-up-presented-by-the-igda/918432" target="_blank" rel="noopener">
